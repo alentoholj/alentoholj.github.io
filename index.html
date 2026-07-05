@@ -1,331 +1,779 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alen Toholj — Cloud Solution Architect</title>
-<meta name="description" content="Alen Toholj — Cloud Solution Architect & Cloud Team Lead. 7+ years building, automating, and scaling reliable, mission-critical infrastructure.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0b1620;          /* deep petrol ink background */
-    --ink-2:#0f1e2a;        /* raised surface */
-    --ink-3:#14293a;        /* card / hairline base */
-    --line:#1d3547;         /* hairline */
-    --fg:#e7eef2;           /* primary text */
-    --fg-dim:#93a7b4;       /* secondary text */
-    --fg-faint:#5f7686;     /* captions / mono labels */
-    --signal:#f4b942;       /* amber status signal */
-    --signal-2:#3ecf8e;     /* healthy green dot */
-    --display:'Space Grotesk',system-ui,sans-serif;
-    --mono:'IBM Plex Mono',ui-monospace,monospace;
-    --body:'Inter',system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--ink);
-    color:var(--fg);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:
-      linear-gradient(rgba(29,53,71,.35) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(29,53,71,.35) 1px,transparent 1px);
-    background-size:44px 44px;
-    background-position:center top;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
-  a{color:inherit}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alen Toholj — Cloud Solution Architect</title>
+  <meta name="description"
+    content="Alen Toholj — Cloud Solution Architect & Cloud Team Lead. 7+ years building, automating, and scaling reliable, mission-critical infrastructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b1620;
+      /* deep petrol ink background */
+      --ink-2: #0f1e2a;
+      /* raised surface */
+      --ink-3: #14293a;
+      /* card / hairline base */
+      --line: #1d3547;
+      /* hairline */
+      --fg: #e7eef2;
+      /* primary text */
+      --fg-dim: #93a7b4;
+      /* secondary text */
+      --fg-faint: #5f7686;
+      /* captions / mono labels */
+      --signal: #f4b942;
+      /* amber status signal */
+      --signal-2: #3ecf8e;
+      /* healthy green dot */
+      --display: 'Space Grotesk', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
+      --body: 'Inter', system-ui, sans-serif;
+    }
 
-  /* ---------- eyebrow / mono labels ---------- */
-  .mono{font-family:var(--mono);letter-spacing:.04em}
-  .eyebrow{
-    font-family:var(--mono);font-size:.72rem;font-weight:500;
-    letter-spacing:.22em;text-transform:uppercase;color:var(--fg-faint);
-    display:flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{content:"";width:22px;height:1px;background:var(--signal);flex:none}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  /* ---------- top bar ---------- */
-  .topbar{
-    border-bottom:1px solid var(--line);
-    background:rgba(11,22,32,.72);backdrop-filter:blur(8px);
-    position:sticky;top:0;z-index:20;
-  }
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-  .brand{font-family:var(--mono);font-weight:600;font-size:.9rem;letter-spacing:.02em}
-  .brand .slash{color:var(--signal)}
-  .nav{display:flex;gap:26px;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--fg-dim)}
-  .nav a{text-decoration:none;transition:color .2s}
-  .nav a:hover{color:var(--signal)}
-  @media(max-width:640px){.nav{display:none}}
+    html {
+      scroll-behavior: smooth
+    }
 
-  /* ---------- hero: status panel ---------- */
-  .hero{padding:74px 0 60px}
-  .status-line{display:flex;align-items:center;gap:12px;margin-bottom:26px}
-  .dot{width:9px;height:9px;border-radius:50%;background:var(--signal-2);
-    box-shadow:0 0 0 0 rgba(62,207,142,.55);animation:pulse 2.6s infinite}
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(62,207,142,.5)}
-    70%{box-shadow:0 0 0 9px rgba(62,207,142,0)}
-    100%{box-shadow:0 0 0 0 rgba(62,207,142,0)}
-  }
-  .status-txt{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-dim)}
-  .status-txt b{color:var(--signal-2);font-weight:600}
-  h1{
-    font-family:var(--display);font-weight:600;
-    font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;
-    letter-spacing:-.02em;margin-bottom:18px;
-  }
-  h1 .role{display:block;color:var(--fg-dim);font-size:clamp(1.1rem,2.6vw,1.5rem);font-weight:500;margin-top:14px;letter-spacing:-.01em}
-  .tagline{max-width:52ch;color:var(--fg-dim);font-size:1.06rem;margin-bottom:34px}
-  .tagline b{color:var(--fg);font-weight:600}
+    body {
+      background: var(--ink);
+      color: var(--fg);
+      font-family: var(--body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        linear-gradient(rgba(29, 53, 71, .35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 71, .35) 1px, transparent 1px);
+      background-size: 44px 44px;
+      background-position: center top;
+    }
 
-  /* telemetry strip */
-  .telemetry{
-    display:grid;grid-template-columns:repeat(4,1fr);
-    border:1px solid var(--line);border-radius:10px;overflow:hidden;
-    background:var(--ink-2);
-  }
-  .cell{padding:18px 20px;border-right:1px solid var(--line)}
-  .cell:last-child{border-right:none}
-  .cell .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-faint);margin-bottom:6px}
-  .cell .v{font-family:var(--display);font-size:1.5rem;font-weight:600;color:var(--fg)}
-  .cell .v small{font-size:.9rem;color:var(--signal);font-weight:500}
-  @media(max-width:640px){
-    .telemetry{grid-template-columns:repeat(2,1fr)}
-    .cell:nth-child(2){border-right:none}
-    .cell:nth-child(1),.cell:nth-child(2){border-bottom:1px solid var(--line)}
-  }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
 
-  /* ---------- generic section ---------- */
-  section{padding:56px 0;border-top:1px solid var(--line)}
-  .sec-head{margin-bottom:34px}
-  .sec-head h2{font-family:var(--display);font-weight:600;font-size:1.7rem;letter-spacing:-.01em;margin-top:12px}
-  .sec-num{font-family:var(--mono);color:var(--signal);font-size:.8rem}
+    a {
+      color: inherit
+    }
 
-  /* about */
-  .about p{color:var(--fg-dim);max-width:64ch;margin-bottom:16px}
-  .about p b{color:var(--fg);font-weight:600}
+    /* ---------- eyebrow / mono labels ---------- */
+    .mono {
+      font-family: var(--mono);
+      letter-spacing: .04em
+    }
 
-  /* stack */
-  .stack{display:flex;flex-wrap:wrap;gap:10px}
-  .chip{
-    font-family:var(--mono);font-size:.78rem;color:var(--fg);
-    border:1px solid var(--line);background:var(--ink-2);
-    padding:7px 13px;border-radius:6px;transition:border-color .2s,color .2s;
-  }
-  .chip:hover{border-color:var(--signal);color:var(--signal)}
-  .chip .g{color:var(--fg-faint)}
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  /* certs */
-  .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  @media(max-width:640px){.certs{grid-template-columns:1fr}}
-  .cert{
-    display:flex;align-items:center;gap:14px;
-    border:1px solid var(--line);background:var(--ink-2);
-    border-radius:10px;padding:16px 18px;text-decoration:none;
-    transition:border-color .2s,transform .2s,background .2s;
-  }
-  .cert:hover{border-color:var(--signal);transform:translateY(-2px);background:var(--ink-3)}
-  .cert .code{
-    font-family:var(--mono);font-weight:600;font-size:.82rem;color:var(--signal);
-    border:1px solid var(--line);border-radius:6px;padding:8px 10px;flex:none;min-width:74px;text-align:center;
-  }
-  .cert .meta .name{font-weight:600;font-size:.95rem}
-  .cert .meta .issuer{font-family:var(--mono);font-size:.72rem;color:var(--fg-faint);letter-spacing:.03em}
-  .cert .arrow{margin-left:auto;color:var(--fg-faint);font-family:var(--mono);transition:color .2s,transform .2s}
-  .cert:hover .arrow{color:var(--signal);transform:translateX(3px)}
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--signal);
+      flex: none
+    }
 
-  /* projects */
-  .projects{display:flex;flex-direction:column;gap:0}
-  .empty{
-    font-family:var(--mono);font-size:.86rem;color:var(--fg-faint);
-    border:1px dashed var(--line);border-radius:10px;
-    padding:26px 22px;text-align:center;
-  }
-  .proj{
-    display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
-    padding:22px 4px;border-bottom:1px solid var(--line);text-decoration:none;
-    transition:padding-left .25s,background .25s;
-  }
-  .proj:first-child{border-top:1px solid var(--line)}
-  .proj:hover{padding-left:16px;background:linear-gradient(90deg,var(--ink-2),transparent)}
-  .proj .pnum{font-family:var(--mono);color:var(--fg-faint);font-size:.8rem}
-  .proj .pbody .pname{font-family:var(--display);font-weight:600;font-size:1.12rem;display:flex;align-items:center;gap:10px}
-  .proj:hover .pname{color:var(--signal)}
-  .proj .pbody .pdesc{color:var(--fg-dim);font-size:.92rem;margin-top:3px;max-width:60ch}
-  .proj .lang{font-family:var(--mono);font-size:.72rem;color:var(--fg-faint);letter-spacing:.04em;flex:none;text-align:right}
-  .proj .lang::before{content:"● ";color:var(--signal)}
-  @media(max-width:640px){
-    .proj{grid-template-columns:auto 1fr;gap:12px}
-    .proj .lang{grid-column:2;text-align:left;margin-top:2px}
-  }
+    /* ---------- top bar ---------- */
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 22, 32, .72);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
 
-  /* contact */
-  .contact{padding-bottom:80px}
-  .contact-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-    font-family:var(--mono);font-size:.86rem;font-weight:500;letter-spacing:.02em;
-    padding:13px 20px;border-radius:8px;transition:transform .2s,background .2s,border-color .2s;
-  }
-  .btn.primary{background:var(--signal);color:#241a00;font-weight:600}
-  .btn.primary:hover{transform:translateY(-2px);background:#ffc85a}
-  .btn.ghost{border:1px solid var(--line);color:var(--fg)}
-  .btn.ghost:hover{border-color:var(--signal);color:var(--signal);transform:translateY(-2px)}
+    .topbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px
+    }
 
-  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--fg-faint)}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
+    .brand {
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .02em
+    }
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important}
-    .reveal{opacity:1;transform:none;transition:none}
-    html{scroll-behavior:auto}
-  }
-</style>
+    .brand .slash {
+      color: var(--signal)
+    }
+
+    .nav {
+      display: flex;
+      gap: 26px;
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .06em;
+      color: var(--fg-dim)
+    }
+
+    .nav a {
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .nav a:hover {
+      color: var(--signal)
+    }
+
+    @media(max-width:640px) {
+      .nav {
+        display: none
+      }
+    }
+
+    /* ---------- hero: status panel ---------- */
+    .hero {
+      padding: 74px 0 60px
+    }
+
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal-2);
+      box-shadow: 0 0 0 0 rgba(62, 207, 142, .55);
+      animation: pulse 2.6s infinite
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(62, 207, 142, .5)
+      }
+
+      70% {
+        box-shadow: 0 0 0 9px rgba(62, 207, 142, 0)
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(62, 207, 142, 0)
+      }
+    }
+
+    .status-txt {
+      font-family: var(--mono);
+      font-size: .74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--fg-dim)
+    }
+
+    .status-txt b {
+      color: var(--signal-2);
+      font-weight: 600
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: clamp(2.6rem, 7vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      margin-bottom: 18px;
+    }
+
+    h1 .role {
+      display: block;
+      color: var(--fg-dim);
+      font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+      font-weight: 500;
+      margin-top: 14px;
+      letter-spacing: -.01em
+    }
+
+    .tagline {
+      max-width: 52ch;
+      color: var(--fg-dim);
+      font-size: 1.06rem;
+      margin-bottom: 34px
+    }
+
+    .tagline b {
+      color: var(--fg);
+      font-weight: 600
+    }
+
+    /* telemetry strip */
+    .telemetry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--ink-2);
+    }
+
+    .cell {
+      padding: 18px 20px;
+      border-right: 1px solid var(--line)
+    }
+
+    .cell:last-child {
+      border-right: none
+    }
+
+    .cell .k {
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      margin-bottom: 6px
+    }
+
+    .cell .v {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--fg)
+    }
+
+    .cell .v small {
+      font-size: .9rem;
+      color: var(--signal);
+      font-weight: 500
+    }
+
+    @media(max-width:640px) {
+      .telemetry {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .cell:nth-child(2) {
+        border-right: none
+      }
+
+      .cell:nth-child(1),
+      .cell:nth-child(2) {
+        border-bottom: 1px solid var(--line)
+      }
+    }
+
+    /* ---------- generic section ---------- */
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .sec-head {
+      margin-bottom: 34px
+    }
+
+    .sec-head h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 1.7rem;
+      letter-spacing: -.01em;
+      margin-top: 12px
+    }
+
+    .sec-num {
+      font-family: var(--mono);
+      color: var(--signal);
+      font-size: .8rem
+    }
+
+    /* about */
+    .about p {
+      color: var(--fg-dim);
+      max-width: 64ch;
+      margin-bottom: 16px
+    }
+
+    .about p b {
+      color: var(--fg);
+      font-weight: 600
+    }
+
+    /* stack */
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .chip {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--fg);
+      border: 1px solid var(--line);
+      background: var(--ink-2);
+      padding: 7px 13px;
+      border-radius: 6px;
+      transition: border-color .2s, color .2s;
+    }
+
+    .chip:hover {
+      border-color: var(--signal);
+      color: var(--signal)
+    }
+
+    .chip .g {
+      color: var(--fg-faint)
+    }
+
+    /* certs */
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    @media(max-width:640px) {
+      .certs {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .cert {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--line);
+      background: var(--ink-2);
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color .2s, transform .2s, background .2s;
+    }
+
+    .cert:hover {
+      border-color: var(--signal);
+      transform: translateY(-2px);
+      background: var(--ink-3)
+    }
+
+    .cert .code {
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: .82rem;
+      color: var(--signal);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      flex: none;
+      min-width: 74px;
+      text-align: center;
+    }
+
+    .cert .meta .name {
+      font-weight: 600;
+      font-size: .95rem
+    }
+
+    .cert .meta .issuer {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--fg-faint);
+      letter-spacing: .03em
+    }
+
+    .cert .arrow {
+      margin-left: auto;
+      color: var(--fg-faint);
+      font-family: var(--mono);
+      transition: color .2s, transform .2s
+    }
+
+    .cert:hover .arrow {
+      color: var(--signal);
+      transform: translateX(3px)
+    }
+
+    /* projects */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 0
+    }
+
+    .empty {
+      font-family: var(--mono);
+      font-size: .86rem;
+      color: var(--fg-faint);
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+      padding: 26px 22px;
+      text-align: center;
+    }
+
+    .proj {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 22px 4px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      transition: padding-left .25s, background .25s;
+    }
+
+    .proj:first-child {
+      border-top: 1px solid var(--line)
+    }
+
+    .proj:hover {
+      padding-left: 16px;
+      background: linear-gradient(90deg, var(--ink-2), transparent)
+    }
+
+    .proj .pnum {
+      font-family: var(--mono);
+      color: var(--fg-faint);
+      font-size: .8rem
+    }
+
+    .proj .pbody .pname {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 1.12rem;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .proj:hover .pname {
+      color: var(--signal)
+    }
+
+    .proj .pbody .pdesc {
+      color: var(--fg-dim);
+      font-size: .92rem;
+      margin-top: 3px;
+      max-width: 60ch
+    }
+
+    .proj .lang {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--fg-faint);
+      letter-spacing: .04em;
+      flex: none;
+      text-align: right
+    }
+
+    .proj .lang::before {
+      content: "● ";
+      color: var(--signal)
+    }
+
+    @media(max-width:640px) {
+      .proj {
+        grid-template-columns: auto 1fr;
+        gap: 12px
+      }
+
+      .proj .lang {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 2px
+      }
+    }
+
+    /* contact */
+    .contact {
+      padding-bottom: 80px
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: .86rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      padding: 13px 20px;
+      border-radius: 8px;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+
+    .btn.primary {
+      background: var(--signal);
+      color: #241a00;
+      font-weight: 600
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      background: #ffc85a
+    }
+
+    .btn.ghost {
+      border: 1px solid var(--line);
+      color: var(--fg)
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--signal);
+      color: var(--signal);
+      transform: translateY(-2px)
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--fg-faint)
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: .74rem;
+      letter-spacing: .04em
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <span class="brand"><span class="slash">~/</span>alen.toholj</span>
-    <nav class="nav">
-      <a href="#about">about</a>
-      <a href="#stack">stack</a>
-      <a href="#certs">certifications</a>
-      <a href="#work">work</a>
-      <a href="#contact">contact</a>
-    </nav>
-  </div>
-</div>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="status-line reveal">
-      <span class="dot"></span>
-      <span class="status-txt">system status &middot; <b>operational</b> &middot; Höchst, Austria</span>
-    </div>
-    <h1 class="reveal">
-      Alen Toholj
-      <span class="role">Cloud Solution Architect &amp; Cloud Team Lead</span>
-    </h1>
-    <p class="tagline reveal">
-      7+ years building, automating, and scaling <b>reliable, mission-critical infrastructure</b> —
-      from data-center operations to modern cloud platforms. I like building things that scale
-      and fixing things that don't.
-    </p>
-    <div class="telemetry reveal">
-      <div class="cell"><div class="k">Experience</div><div class="v">7+ <small>yrs</small></div></div>
-      <div class="cell"><div class="k">Certifications</div><div class="v">6 <small>active</small></div></div>
-      <div class="cell"><div class="k">Role</div><div class="v" style="font-size:1.05rem">Team&nbsp;Lead</div></div>
-      <div class="cell"><div class="k">Focus</div><div class="v" style="font-size:1.05rem">Azure&nbsp;/&nbsp;IaC</div></div>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="brand"><span class="slash">~/</span>alen.toholj</span>
+      <nav class="nav">
+        <a href="#about">about</a>
+        <a href="#stack">stack</a>
+        <a href="#certs">certifications</a>
+        <a href="#work">work</a>
+        <a href="#contact">contact</a>
+      </nav>
     </div>
   </div>
-</header>
 
-<section id="about" class="about">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">whoami</span>
-      <h2>About</h2>
+  <header class="hero">
+    <div class="wrap">
+      <div class="status-line reveal">
+        <span class="dot"></span>
+        <span class="status-txt">system status &middot; <b>operational</b> &middot; Höchst, Austria</span>
+      </div>
+      <h1 class="reveal">
+        Alen Toholj
+        <span class="role">Cloud Solution Architect &amp; Cloud Team Lead</span>
+      </h1>
+      <p class="tagline reveal">
+        7+ years building, automating, and scaling <b>reliable, mission-critical infrastructure</b> —
+        from data-center operations to modern cloud platforms. I like building things that scale
+        and fixing things that don't.
+      </p>
+      <div class="telemetry reveal">
+        <div class="cell">
+          <div class="k">Experience</div>
+          <div class="v">7+ <small>yrs</small></div>
+        </div>
+        <div class="cell">
+          <div class="k">Certifications</div>
+          <div class="v">6 <small>active</small></div>
+        </div>
+        <div class="cell">
+          <div class="k">Role</div>
+          <div class="v" style="font-size:1.05rem">Team&nbsp;Lead</div>
+        </div>
+        <div class="cell">
+          <div class="k">Focus</div>
+          <div class="v" style="font-size:1.05rem">Azure&nbsp;/&nbsp;IaC</div>
+        </div>
+      </div>
     </div>
-    <p class="reveal">I'm a <b>Cloud Solution Architect and DevOps Engineer</b> leading the cloud team at Blum.
-      My job is to design the platforms other teams build on — secure, well-governed cloud
-      environments on <b>Azure and AWS</b> — and to make sure the road from a developer's commit to
-      production is fast, repeatable, and safe.</p>
-    <p class="reveal">In practice that means codifying infrastructure with <b>Terraform</b>, standing up
-      <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running
-      containerized workloads on <b>Kubernetes</b>. I care about the things that don't show up in a
-      demo: <b>reliability, observability, and cost efficiency</b> — the difference between a system
-      that works and one you can trust at 3 a.m.</p>
-    <p class="reveal">My path started in <b>systems engineering and data-center operations</b>, which is where I
-      learned how infrastructure actually behaves under pressure. Leading a team now, I spend as much
-      time raising the bar on architecture and automation standards as I do writing code myself —
-      always looking for the smarter, simpler way to build.</p>
-  </div>
-</section>
+  </header>
 
-<section id="stack" class="stack-sec">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">$ cat stack.txt</span>
-      <h2>Tech &amp; Tooling</h2>
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">whoami</span>
+        <h2>About</h2>
+      </div>
+      <p class="reveal">I'm a <b>Cloud Solution Architect and DevOps Engineer</b> leading the cloud team at Blum.
+        My job is to design the platforms other teams build on — secure, well-governed cloud
+        environments on <b>Azure and AWS</b> — and to make sure the road from a developer's commit to
+        production is fast, repeatable, and safe.</p>
+      <p class="reveal">In practice that means codifying infrastructure with <b>Terraform</b>, standing up
+        <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running
+        containerized workloads on <b>Kubernetes</b>. I care about the things that don't show up in a
+        demo: <b>reliability, observability, and cost efficiency</b> — the difference between a system
+        that works and one you can trust at 3 a.m.
+      </p>
+      <p class="reveal">My path started in <b>systems engineering and data-center operations</b>, which is where I
+        learned how infrastructure actually behaves under pressure. Leading a team now, I spend as much
+        time raising the bar on architecture and automation standards as I do writing code myself —
+        always looking for the smarter, simpler way to build.</p>
     </div>
-    <div class="stack reveal">
-      <span class="chip">Azure</span>
-      <span class="chip">AWS</span>
-      <span class="chip">Terraform</span>
-      <span class="chip">Kubernetes</span>
-      <span class="chip">Docker</span>
-      <span class="chip">Azure DevOps</span>
-      <span class="chip">GitHub Actions</span>
-      <span class="chip">CI<span class="g">/</span>CD</span>
-      <span class="chip">Bash</span>
-      <span class="chip">Linux</span>
-      <span class="chip">RHEL</span>
-      <span class="chip">Ansible</span>
-      <span class="chip">Monitoring</span>
-      <span class="chip">DevSecOps</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="certs">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">verified credentials</span>
-      <h2>Certifications</h2>
+  <section id="stack" class="stack-sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">$ cat stack.txt</span>
+        <h2>Tech &amp; Tooling</h2>
+      </div>
+      <div class="stack reveal">
+        <span class="chip">Azure</span>
+        <span class="chip">AWS</span>
+        <span class="chip">Terraform</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Azure DevOps</span>
+        <span class="chip">GitHub Actions</span>
+        <span class="chip">CI<span class="g">/</span>CD</span>
+        <span class="chip">Bash</span>
+        <span class="chip">Linux</span>
+        <span class="chip">RHEL</span>
+        <span class="chip">Ansible</span>
+        <span class="chip">Monitoring</span>
+        <span class="chip">DevSecOps</span>
+      </div>
     </div>
-    <div class="certs">
-      <a class="cert reveal" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/BC2DEE263AC0C649?sharingId=DEA67547D200D4A9" target="_blank" rel="noopener">
-        <span class="code">AZ-900</span>
-        <span class="meta"><div class="name">Azure Fundamentals</div><div class="issuer">Microsoft</div></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="cert reveal" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/710E750EEFA6EBD0?sharingId=DEA67547D200D4A9" target="_blank" rel="noopener">
-        <span class="code">AZ-104</span>
-        <span class="meta"><div class="name">Azure Administrator Associate</div><div class="issuer">Microsoft</div></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="cert reveal" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/DB331F78114B0761" target="_blank" rel="noopener">
-        <span class="code">AZ-400</span>
-        <span class="meta"><div class="name">DevOps Engineer Expert</div><div class="issuer">Microsoft</div></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="cert reveal" href="https://www.credly.com/badges/e24d36be-bf69-4180-8a0c-c238c6bbe23c/linked_in_profile" target="_blank" rel="noopener">
-        <span class="code">CLF-C02</span>
-        <span class="meta"><div class="name">AWS Cloud Practitioner</div><div class="issuer">Amazon Web Services</div></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="cert reveal" href="https://cs.lpi.org/caf/Xamman/certification/verify/LPI000511607/7ccdb96qh8" target="_blank" rel="noopener">
-        <span class="code">LPIC-1</span>
-        <span class="meta"><div class="name">Certified Linux Administrator</div><div class="issuer">Linux Professional Institute</div></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="cert reveal" href="https://www.credly.com/badges/5a2ef478-5955-449c-9046-cee45d83b927/linked_in_profile" target="_blank" rel="noopener">
-        <span class="code">RHCSA</span>
-        <span class="meta"><div class="name">Certified System Administrator</div><div class="issuer">Red Hat</div></span>
-        <span class="arrow">→</span>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">$ ls ~/repos</span>
-      <h2>Selected Work</h2>
+  <section id="certs">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">verified credentials</span>
+        <h2>Certifications</h2>
+      </div>
+      <div class="certs">
+        <a class="cert reveal"
+          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/BC2DEE263AC0C649?sharingId=DEA67547D200D4A9"
+          target="_blank" rel="noopener">
+          <span class="code">AZ-900</span>
+          <span class="meta">
+            <div class="name">Azure Fundamentals</div>
+            <div class="issuer">Microsoft</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="cert reveal"
+          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/710E750EEFA6EBD0?sharingId=DEA67547D200D4A9"
+          target="_blank" rel="noopener">
+          <span class="code">AZ-104</span>
+          <span class="meta">
+            <div class="name">Azure Administrator Associate</div>
+            <div class="issuer">Microsoft</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="cert reveal"
+          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/DB331F78114B0761"
+          target="_blank" rel="noopener">
+          <span class="code">AZ-400</span>
+          <span class="meta">
+            <div class="name">DevOps Engineer Expert</div>
+            <div class="issuer">Microsoft</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="cert reveal"
+          href="https://www.credly.com/badges/e24d36be-bf69-4180-8a0c-c238c6bbe23c/linked_in_profile" target="_blank"
+          rel="noopener">
+          <span class="code">CLF-C02</span>
+          <span class="meta">
+            <div class="name">AWS Cloud Practitioner</div>
+            <div class="issuer">Amazon Web Services</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="cert reveal" href="https://cs.lpi.org/caf/Xamman/certification/verify/LPI000511607/7ccdb96qh8"
+          target="_blank" rel="noopener">
+          <span class="code">LPIC-1</span>
+          <span class="meta">
+            <div class="name">Certified Linux Administrator</div>
+            <div class="issuer">Linux Professional Institute</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="cert reveal"
+          href="https://www.credly.com/badges/5a2ef478-5955-449c-9046-cee45d83b927/linked_in_profile" target="_blank"
+          rel="noopener">
+          <span class="code">RHCSA</span>
+          <span class="meta">
+            <div class="name">Certified System Administrator</div>
+            <div class="issuer">Red Hat</div>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
     </div>
-    <div class="projects">
-      <!--
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">$ ls ~/repos</span>
+        <h2>Selected Work</h2>
+      </div>
+      <div class="projects">
+        <!--
         ADD YOUR PROJECTS HERE. Copy this block for each project and fill it in:
 
         <a class="proj reveal" href="https://github.com/alentoholj/REPO-NAME" target="_blank" rel="noopener">
@@ -339,43 +787,46 @@
 
         Increment pnum (01, 02, 03…) and change the lang label per project.
       -->
-      <p class="empty reveal">Projects coming soon — currently curating the work worth showing.</p>
+        <p class="empty reveal">Projects coming soon — currently curating the work worth showing.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">open a connection</span>
-      <h2>Get in touch</h2>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">open a connection</span>
+        <h2>Get in touch</h2>
+      </div>
+      <p class="tagline reveal" style="margin-bottom:22px">Always up for a conversation about cloud architecture,
+        automation, or leading engineering teams.</p>
+      <div class="contact-grid reveal">
+        <a class="btn primary" href="mailto:alen.toholj@gmail.com">Email me ↗</a>
+        <a class="btn ghost" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/alen-toholj-326014141/" target="_blank"
+          rel="noopener">LinkedIn ↗</a>
+        <a class="btn ghost" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </div>
-    <p class="tagline reveal" style="margin-bottom:22px">Always up for a conversation about cloud architecture, automation, or leading engineering teams.</p>
-    <div class="contact-grid reveal">
-      <a class="btn primary" href="mailto:your.email@example.com">Email me ↗</a>
-      <a class="btn ghost" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/alen-toholj-326014141/" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn ghost" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub ↗</a>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; <span id="yr"></span> Alen Toholj</span>
+      <span>built &amp; deployed on GitHub Pages</span>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr"></span> Alen Toholj</span>
-    <span>built &amp; deployed on GitHub Pages</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{
-    el.style.transitionDelay = (Math.min(i,6)*60)+'ms';
-    io.observe(el);
-  });
-</script>
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i, 6) * 60) + 'ms';
+      io.observe(el);
+    });
+  </script>
 </body>
+
 </html>
