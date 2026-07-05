@@ -142,6 +142,11 @@
 
   /* projects */
   .projects{display:flex;flex-direction:column;gap:0}
+  .empty{
+    font-family:var(--mono);font-size:.86rem;color:var(--fg-faint);
+    border:1px dashed var(--line);border-radius:10px;
+    padding:26px 22px;text-align:center;
+  }
   .proj{
     display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
     padding:22px 4px;border-bottom:1px solid var(--line);text-decoration:none;
@@ -231,13 +236,19 @@
       <span class="eyebrow">whoami</span>
       <h2>About</h2>
     </div>
-    <p class="reveal">Currently a <b>Cloud Solution Architect</b> and lead of the cloud team at Blum. My path started in
-      systems engineering and grew through DevOps, where I found my focus in cloud and automation.</p>
-    <p class="reveal">Along the way I've worked across <b>data-center operations</b> and <b>modern cloud environments</b>,
-      learning to design systems that aren't just functional but resilient and efficient — and to help a team
-      build them the same way.</p>
-    <p class="reveal">Backed by a Master's degree and hands-on experience, I enjoy turning complex challenges into
-      simple, practical solutions. Curious by nature, always exploring new tools — because there's usually a smarter way to build.</p>
+    <p class="reveal">I'm a <b>Cloud Solution Architect and DevOps Engineer</b> leading the cloud team at Blum.
+      My job is to design the platforms other teams build on — secure, well-governed cloud
+      environments on <b>Azure and AWS</b> — and to make sure the road from a developer's commit to
+      production is fast, repeatable, and safe.</p>
+    <p class="reveal">In practice that means codifying infrastructure with <b>Terraform</b>, standing up
+      <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running
+      containerized workloads on <b>Kubernetes</b>. I care about the things that don't show up in a
+      demo: <b>reliability, observability, and cost efficiency</b> — the difference between a system
+      that works and one you can trust at 3 a.m.</p>
+    <p class="reveal">My path started in <b>systems engineering and data-center operations</b>, which is where I
+      learned how infrastructure actually behaves under pressure. Leading a team now, I spend as much
+      time raising the bar on architecture and automation standards as I do writing code myself —
+      always looking for the smarter, simpler way to build.</p>
   </div>
 </section>
 
@@ -314,38 +325,21 @@
       <h2>Selected Work</h2>
     </div>
     <div class="projects">
-      <a class="proj reveal" href="https://github.com/alentoholj/Terraform-Azure" target="_blank" rel="noopener">
-        <span class="pnum">01</span>
-        <span class="pbody">
-          <span class="pname">Terraform-Azure</span>
-          <span class="pdesc">Hands-on labs for practicing Terraform with the Azure cloud platform — infrastructure as code from the ground up.</span>
-        </span>
-        <span class="lang">HCL</span>
-      </a>
-      <a class="proj reveal" href="https://github.com/alentoholj/DevSecOps-Project-Netflix" target="_blank" rel="noopener">
-        <span class="pnum">02</span>
-        <span class="pbody">
-          <span class="pname">DevSecOps Pipeline</span>
-          <span class="pdesc">A reliable CI/CD pipeline with integrated security components — build, scan, and deploy with guardrails.</span>
-        </span>
-        <span class="lang">TypeScript</span>
-      </a>
-      <a class="proj reveal" href="https://github.com/alentoholj/Simple-Bash-Scripts" target="_blank" rel="noopener">
-        <span class="pnum">03</span>
-        <span class="pbody">
-          <span class="pname">Simple Bash Scripts</span>
-          <span class="pdesc">A collection of practical bash scripts for daily system administration and automation.</span>
-        </span>
-        <span class="lang">Shell</span>
-      </a>
-      <a class="proj reveal" href="https://github.com/alentoholj?tab=repositories" target="_blank" rel="noopener">
-        <span class="pnum">04</span>
-        <span class="pbody">
-          <span class="pname">All repositories&nbsp;→</span>
-          <span class="pdesc">Browse everything on GitHub.</span>
-        </span>
-        <span class="lang">GitHub</span>
-      </a>
+      <!--
+        ADD YOUR PROJECTS HERE. Copy this block for each project and fill it in:
+
+        <a class="proj reveal" href="https://github.com/alentoholj/REPO-NAME" target="_blank" rel="noopener">
+          <span class="pnum">01</span>
+          <span class="pbody">
+            <span class="pname">Project name</span>
+            <span class="pdesc">One-line description of what it does and why it matters.</span>
+          </span>
+          <span class="lang">HCL</span>
+        </a>
+
+        Increment pnum (01, 02, 03…) and change the lang label per project.
+      -->
+      <p class="empty reveal">Projects coming soon — currently curating the work worth showing.</p>
     </div>
   </div>
 </section>
@@ -358,7 +352,9 @@
     </div>
     <p class="tagline reveal" style="margin-bottom:22px">Always up for a conversation about cloud architecture, automation, or leading engineering teams.</p>
     <div class="contact-grid reveal">
-      <a class="btn primary" href="https://www.linkedin.com/in/alen-toholj-326014141/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn primary" href="mailto:your.email@example.com">Email me ↗</a>
+      <a class="btn ghost" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/alen-toholj-326014141/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn ghost" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
