@@ -495,6 +495,31 @@
       color: var(--signal)
     }
 
+    /* static (non-link) project card — for NDA work with no repo */
+    .proj.static {
+      cursor: default
+    }
+
+    .proj.static:hover {
+      padding-left: 4px;
+      background: none
+    }
+
+    .proj.static:hover .pname {
+      color: var(--fg)
+    }
+
+    .proj .nda {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
     @media(max-width:640px) {
       .proj {
         grid-template-columns: auto 1fr;
@@ -655,7 +680,8 @@
         </div>
         <div class="cell">
           <div class="k">Focus</div>
-          <div class="v" style="font-size:1.05rem">Azure&nbsp;&middot;&nbsp;IaC&nbsp;&middot;&nbsp;CI/CD&nbsp;&middot;&nbsp;Scripting</div>
+          <div class="v" style="font-size:1.05rem">
+            Azure&nbsp;&middot;&nbsp;IaC&nbsp;&middot;&nbsp;CI/CD&nbsp;&middot;&nbsp;Scripting</div>
         </div>
       </div>
     </div>
@@ -788,20 +814,20 @@
       </div>
       <div class="projects">
         <!--
-        ADD YOUR PROJECTS HERE. Copy this block for each project and fill it in:
-
-        <a class="proj reveal" href="https://github.com/alentoholj/REPO-NAME" target="_blank" rel="noopener">
+        ADD PROJECTS HERE. For a linked repo, use an "a.proj reveal" anchor with an href.
+        For NDA / no-link work, use a "div.proj static reveal" block like the one below.
+        Increment pnum (01, 02, 03…) per project.
+      -->
+        <div class="proj static reveal">
           <span class="pnum">01</span>
           <span class="pbody">
-            <span class="pname">Project name</span>
-            <span class="pdesc">One-line description of what it does and why it matters.</span>
+            <span class="pname">Storage Platform <span class="nda">NDA</span></span>
+            <span class="pdesc">Owned the cloud architecture for a storage API and its companion service — designed the
+              resource topology, provisioned and deployed the infrastructure, and established CI/CD pipelines to
+              automate build, test, and release across the repositories.</span>
           </span>
-          <span class="lang">HCL</span>
-        </a>
-
-        Increment pnum (01, 02, 03…) and change the lang label per project.
-      -->
-        <p class="empty reveal">Projects coming soon — currently curating the work worth showing.</p>
+          <span class="lang">Azure · IaC · CI/CD</span>
+        </div>
       </div>
     </div>
   </section>
