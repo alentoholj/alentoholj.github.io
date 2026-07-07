@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alen Toholj — Cloud Solution Architect</title>
   <meta name="description"
-    content="Alen Toholj — Cloud Solution Architect & Cloud Team Lead. 7+ years building, automating, and scaling reliable, mission-critical infrastructure.">
+    content="Alen Toholj — Cloud Solution Architect & Cloud Team Lead. 8+ years building, automating, and scaling reliable, mission-critical infrastructure.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -269,16 +269,21 @@
 
     @media(max-width:640px) {
       .telemetry {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: 1fr
       }
 
-      .cell:nth-child(2) {
-        border-right: none
-      }
-
-      .cell:nth-child(1),
-      .cell:nth-child(2) {
+      .cell {
+        border-right: none;
         border-bottom: 1px solid var(--line)
+      }
+
+      .cell:last-child {
+        border-bottom: none
+      }
+
+      .cell .v {
+        font-size: 1.35rem;
+        word-break: break-word
       }
     }
 
@@ -594,6 +599,14 @@
         scroll-behavior: auto
       }
     }
+
+    /* accessible keyboard focus */
+    a:focus-visible,
+    .btn:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
@@ -642,7 +655,7 @@
         </div>
         <div class="cell">
           <div class="k">Focus</div>
-          <div class="v" style="font-size:1.05rem">Azure&nbsp;/&nbsp;IaC/&nbsp;CICD/&nbsp;Scripting</div>
+          <div class="v" style="font-size:1.05rem">Azure&nbsp;&middot;&nbsp;IaC&nbsp;&middot;&nbsp;CI/CD&nbsp;&middot;&nbsp;Scripting</div>
         </div>
       </div>
     </div>
@@ -660,7 +673,7 @@
         production is fast, repeatable, and safe.</p>
       <p class="reveal">In practice that means codifying infrastructure with <b>Terraform</b>, standing up
         <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running
-        containerized workloads on <b>Kubernetes</b>/<b>Openshift</b>. I care about the things that don't show up in a
+        containerized workloads on <b>Kubernetes</b>/<b>OpenShift</b>. I care about the things that don't show up in a
         demo: <b>reliability, observability, and cost efficiency</b> — the difference between a system
         that works and one you can trust at 3 a.m.
       </p>
@@ -682,7 +695,7 @@
         <span class="chip">AWS</span>
         <span class="chip">Terraform</span>
         <span class="chip">Kubernetes</span>
-        <span class="chip">Openshift</span>
+        <span class="chip">OpenShift</span>
         <span class="chip">Docker</span>
         <span class="chip">Azure DevOps</span>
         <span class="chip">Jenkins</span>
