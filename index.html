@@ -299,6 +299,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 <div class="reveal"><div class="eyebrow">selected work</div><h2>Projects</h2></div>
 <div class="projects">
 <div class="card proj reveal">
+<div class="head"><div class="ic">📦</div><h3>Terraform Module Library on GitLab <span class="nda">NDA</span></h3><div class="tags"><span class="tag">Terraform</span><span class="tag">GitLab CI</span><span class="tag">semantic-release</span><span class="tag">Renovate</span></div></div>
+<div class="story">
+<div><b>Challenge</b><p>Teams needed a shared, versioned way to reuse Terraform code and to set up GitLab projects consistently, instead of copying modules and configuration by hand.</p></div>
+<div><b>What I did</b><p>Established a Terraform module library on GitLab. Used Terraform with GitLab CI/CD pipelines to provision and manage the GitLab projects themselves, built pipelines that publish modules to the GitLab Terraform module registry, added semantic-release for automatic versioning and changelogs, and set up Renovate bot to keep module versions up to date in consuming projects.</p></div>
+<div class="res"><b>Result</b><p>Reusable, versioned modules with fully automated releases and dependency updates, so teams build on tested building blocks instead of copying code.</p></div>
+</div>
+</div><div class="card proj reveal">
 <div class="head"><div class="ic">🗄️</div><h3>Storage Platform <span class="nda">NDA</span></h3><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
 <div class="story">
 <div><b>Challenge</b><p>A client needed cloud infrastructure for a storage platform made up of an API, a companion service, a web frontend and a mobile app, with a reliable path from code to production across several repositories.</p></div>
