@@ -132,14 +132,20 @@ h2{font-family:var(--display);font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:8
 @media(max-width:560px){.certs{grid-template-columns:1fr}}
 
 /* projects */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.proj{padding:26px;display:flex;flex-direction:column;gap:12px}
+.projects{display:grid;gap:18px}
+.proj{padding:28px}
 .proj:hover{transform:translateY(-3px)}
-.proj .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,transparent),transparent);border:1px solid var(--line)}
-.proj h3{font-family:var(--display);font-size:1.12rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.proj .head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.proj .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,transparent),transparent);border:1px solid var(--line);flex:none}
+.proj h3{font-family:var(--display);font-size:1.2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.proj .head .tags{margin-left:auto}
 .nda{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;padding:2px 8px;border-radius:6px;border:1px solid var(--line-2);color:var(--faint)}
-.proj p{color:var(--dim);font-size:.92rem;flex:1}
-@media(max-width:860px){.projects{grid-template-columns:1fr}}
+.story{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:18px}
+.story div{padding:16px 18px;border-radius:12px;background:color-mix(in srgb,var(--accent) 5%,transparent);border:1px solid var(--line)}
+.story b{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500}
+.story .res b{color:var(--ok)}
+.story p{color:var(--dim);font-size:.92rem}
+@media(max-width:860px){.story{grid-template-columns:1fr}.proj .head .tags{margin-left:0;width:100%}}
 
 /* contact */
 .contact{padding:56px;text-align:center;position:relative;overflow:hidden}
@@ -292,9 +298,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 <div class="wrap">
 <div class="reveal"><div class="eyebrow">selected work</div><h2>Projects</h2></div>
 <div class="projects">
-<div class="card proj reveal"><div class="ic">🗄️</div><h3>Storage Platform <span class="nda">NDA</span></h3><p>Owned the cloud architecture for a storage API and its companion service: designed the resource topology, provisioned the infrastructure and set up CI/CD to automate build, test and release.</p><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
-<div class="card proj reveal"><div class="ic">🧱</div><h3>OpenShift on VMware <span class="nda">NDA</span></h3><p>Architected and deployed a Red Hat OpenShift platform on VMware, provisioned with Terraform. Owned cluster setup end to end, ongoing maintenance and deployment of application services.</p><div class="tags"><span class="tag">OpenShift</span><span class="tag">VMware</span><span class="tag">Terraform</span><span class="tag">Jenkins</span></div></div>
-<div class="card proj reveal"><div class="ic">🎓</div><h3>Education Platform <span class="nda">NDA</span></h3><p>Designed the Azure platform approach and IaC foundation for an education platform, with Azure DevOps pipelines from provisioning to application release.</p><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
+<div class="card proj reveal">
+<div class="head"><div class="ic">🗄️</div><h3>Storage Platform <span class="nda">NDA</span></h3><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
+<div class="story">
+<div><b>Challenge</b><p>A client needed cloud infrastructure for a storage platform made up of an API, a companion service, a web frontend and a mobile app, with a reliable path from code to production across several repositories.</p></div>
+<div><b>What I did</b><p>Owned the Azure architecture end to end: designed the resource topology, codified the infrastructure in Terraform and built Azure DevOps pipelines covering build, test and release for the API, the companion service and the web frontend.</p></div>
+<div class="res"><b>Result</b><p>Repeatable, fully automated deployments of the backend and web frontend, with infrastructure managed as code instead of manual setup.</p></div>
+</div>
+</div>
+<div class="card proj reveal">
+<div class="head"><div class="ic">🧱</div><h3>OpenShift Platform on VMware <span class="nda">NDA</span></h3><div class="tags"><span class="tag">OpenShift</span><span class="tag">VMware</span><span class="tag">Terraform</span><span class="tag">Jenkins</span></div></div>
+<div class="story">
+<div><b>Challenge</b><p>Bring a container platform into production on the client's existing VMware environment.</p></div>
+<div><b>What I did</b><p>Provisioned the virtual machines and storage on VMware with Terraform, then deployed and configured Red Hat OpenShift on top. Owned the cluster setup, ongoing platform maintenance and deployment of application services, with Jenkins handling CI/CD.</p></div>
+<div class="res"><b>Result</b><p>A production OpenShift platform running on existing infrastructure, with the underlying VMs and storage reproducible from code.</p></div>
+</div>
+</div>
+<div class="card proj reveal">
+<div class="head"><div class="ic">🎓</div><h3>Education Platform <span class="nda">NDA</span></h3><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
+<div class="story">
+<div><b>Challenge</b><p>An education-focused platform needed a cloud foundation that could scale and be deployed consistently.</p></div>
+<div><b>What I did</b><p>Designed the Azure platform approach and implemented the infrastructure as code with Terraform, plus Azure DevOps pipelines from provisioning to application release.</p></div>
+<div class="res"><b>Result</b><p>A repeatable, scalable path from an empty subscription to a running application in Azure.</p></div>
+</div>
+</div>
 </div>
 </div>
 </section>
