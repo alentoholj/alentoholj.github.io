@@ -1,943 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alen Toholj — Cloud Solution Architect</title>
-  <meta name="description"
-    content="Alen Toholj — Cloud Solution Architect at Blum. 8+ years building, automating, and scaling reliable, mission-critical infrastructure.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0b1620;
-      /* deep petrol ink background */
-      --ink-2: #0f1e2a;
-      /* raised surface */
-      --ink-3: #14293a;
-      /* card / hairline base */
-      --line: #1d3547;
-      /* hairline */
-      --fg: #e7eef2;
-      /* primary text */
-      --fg-dim: #93a7b4;
-      /* secondary text */
-      --fg-faint: #5f7686;
-      /* captions / mono labels */
-      --signal: #f4b942;
-      /* amber status signal */
-      --signal-2: #3ecf8e;
-      /* healthy green dot */
-      --display: 'Space Grotesk', system-ui, sans-serif;
-      --mono: 'IBM Plex Mono', ui-monospace, monospace;
-      --body: 'Inter', system-ui, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      background: var(--ink);
-      color: var(--fg);
-      font-family: var(--body);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      background-image:
-        linear-gradient(rgba(29, 53, 71, .35) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(29, 53, 71, .35) 1px, transparent 1px);
-      background-size: 44px 44px;
-      background-position: center top;
-    }
-
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px
-    }
-
-    a {
-      color: inherit
-    }
-
-    /* ---------- eyebrow / mono labels ---------- */
-    .mono {
-      font-family: var(--mono);
-      letter-spacing: .04em
-    }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: .72rem;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--fg-faint);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 1px;
-      background: var(--signal);
-      flex: none
-    }
-
-    /* ---------- top bar ---------- */
-    .topbar {
-      border-bottom: 1px solid var(--line);
-      background: rgba(11, 22, 32, .72);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .topbar .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px
-    }
-
-    .brand {
-      font-family: var(--mono);
-      font-weight: 600;
-      font-size: .9rem;
-      letter-spacing: .02em
-    }
-
-    .brand .slash {
-      color: var(--signal)
-    }
-
-    .nav {
-      display: flex;
-      gap: 26px;
-      font-family: var(--mono);
-      font-size: .78rem;
-      letter-spacing: .06em;
-      color: var(--fg-dim)
-    }
-
-    .nav a {
-      text-decoration: none;
-      transition: color .2s
-    }
-
-    .nav a:hover {
-      color: var(--signal)
-    }
-
-    @media(max-width:640px) {
-      .nav {
-        display: none
-      }
-    }
-
-    /* ---------- hero: status panel ---------- */
-    .hero {
-      padding: 74px 0 60px
-    }
-
-    .status-line {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 26px
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--signal-2);
-      box-shadow: 0 0 0 0 rgba(62, 207, 142, .55);
-      animation: pulse 2.6s infinite
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(62, 207, 142, .5)
-      }
-
-      70% {
-        box-shadow: 0 0 0 9px rgba(62, 207, 142, 0)
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(62, 207, 142, 0)
-      }
-    }
-
-    .status-txt {
-      font-family: var(--mono);
-      font-size: .74rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--fg-dim)
-    }
-
-    .status-txt b {
-      color: var(--signal-2);
-      font-weight: 600
-    }
-
-    h1 {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: clamp(2.6rem, 7vw, 4.6rem);
-      line-height: 1.02;
-      letter-spacing: -.02em;
-      margin-bottom: 18px;
-    }
-
-    h1 .role {
-      display: block;
-      color: var(--fg-dim);
-      font-size: clamp(1.1rem, 2.6vw, 1.5rem);
-      font-weight: 500;
-      margin-top: 14px;
-      letter-spacing: -.01em
-    }
-
-    .tagline {
-      max-width: 52ch;
-      color: var(--fg-dim);
-      font-size: 1.06rem;
-      margin-bottom: 34px
-    }
-
-    .tagline b {
-      color: var(--fg);
-      font-weight: 600
-    }
-
-    /* telemetry strip */
-    .telemetry {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--ink-2);
-    }
-
-    .cell {
-      padding: 18px 20px;
-      border-right: 1px solid var(--line)
-    }
-
-    .cell:last-child {
-      border-right: none
-    }
-
-    .cell .k {
-      font-family: var(--mono);
-      font-size: .66rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--fg-faint);
-      margin-bottom: 6px
-    }
-
-    .cell .v {
-      font-family: var(--display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--fg)
-    }
-
-    .cell .v small {
-      font-size: .9rem;
-      color: var(--signal);
-      font-weight: 500
-    }
-
-    @media(max-width:640px) {
-      .telemetry {
-        grid-template-columns: 1fr
-      }
-
-      .cell {
-        border-right: none;
-        border-bottom: 1px solid var(--line)
-      }
-
-      .cell:last-child {
-        border-bottom: none
-      }
-
-      .cell .v {
-        font-size: 1.35rem;
-        word-break: break-word
-      }
-    }
-
-    /* ---------- generic section ---------- */
-    section {
-      padding: 56px 0;
-      border-top: 1px solid var(--line)
-    }
-
-    .sec-head {
-      margin-bottom: 34px
-    }
-
-    .sec-head h2 {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 1.7rem;
-      letter-spacing: -.01em;
-      margin-top: 12px
-    }
-
-    .sec-num {
-      font-family: var(--mono);
-      color: var(--signal);
-      font-size: .8rem
-    }
-
-    /* about */
-    .about p {
-      color: var(--fg-dim);
-      max-width: 64ch;
-      margin-bottom: 16px
-    }
-
-    .about p b {
-      color: var(--fg);
-      font-weight: 600
-    }
-
-    /* stack */
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px
-    }
-
-    .chip {
-      font-family: var(--mono);
-      font-size: .78rem;
-      color: var(--fg);
-      border: 1px solid var(--line);
-      background: var(--ink-2);
-      padding: 7px 13px;
-      border-radius: 6px;
-      transition: border-color .2s, color .2s;
-    }
-
-    .chip:hover {
-      border-color: var(--signal);
-      color: var(--signal)
-    }
-
-    .chip .g {
-      color: var(--fg-faint)
-    }
-
-    /* certs */
-    .certs {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px
-    }
-
-    @media(max-width:640px) {
-      .certs {
-        grid-template-columns: 1fr
-      }
-    }
-
-    .cert {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border: 1px solid var(--line);
-      background: var(--ink-2);
-      border-radius: 10px;
-      padding: 16px 18px;
-      text-decoration: none;
-      transition: border-color .2s, transform .2s, background .2s;
-    }
-
-    .cert:hover {
-      border-color: var(--signal);
-      transform: translateY(-2px);
-      background: var(--ink-3)
-    }
-
-    .cert .code {
-      font-family: var(--mono);
-      font-weight: 600;
-      font-size: .82rem;
-      color: var(--signal);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 8px 10px;
-      flex: none;
-      min-width: 74px;
-      text-align: center;
-    }
-
-    .cert .meta .name {
-      font-weight: 600;
-      font-size: .95rem
-    }
-
-    .cert .meta .issuer {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--fg-faint);
-      letter-spacing: .03em
-    }
-
-    .cert .arrow {
-      margin-left: auto;
-      color: var(--fg-faint);
-      font-family: var(--mono);
-      transition: color .2s, transform .2s
-    }
-
-    .cert:hover .arrow {
-      color: var(--signal);
-      transform: translateX(3px)
-    }
-
-    /* experience: fixed year column */ #experience .pnum { min-width: 96px } /* projects */
-    .projects {
-      display: flex;
-      flex-direction: column;
-      gap: 0
-    }
-
-    .empty {
-      font-family: var(--mono);
-      font-size: .86rem;
-      color: var(--fg-faint);
-      border: 1px dashed var(--line);
-      border-radius: 10px;
-      padding: 26px 22px;
-      text-align: center;
-    }
-
-    .proj {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 20px;
-      align-items: center;
-      padding: 22px 4px;
-      border-bottom: 1px solid var(--line);
-      text-decoration: none;
-      transition: padding-left .25s, background .25s;
-    }
-
-    .proj:first-child {
-      border-top: 1px solid var(--line)
-    }
-
-    .proj:hover {
-      padding-left: 16px;
-      background: linear-gradient(90deg, var(--ink-2), transparent)
-    }
-
-    .proj .pnum {
-      font-family: var(--mono);
-      color: var(--fg-faint);
-      font-size: .8rem
-    }
-
-    .proj .pbody .pname {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 1.12rem;
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .proj:hover .pname {
-      color: var(--signal)
-    }
-
-    .proj .pbody .pdesc {
-      color: var(--fg-dim);
-      font-size: .92rem;
-      margin-top: 3px;
-      max-width: 60ch
-    }
-
-    .proj .lang {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--fg-faint);
-      letter-spacing: .04em;
-      flex: none;
-      text-align: right
-    }
-
-    .proj .lang::before {
-      content: "● ";
-      color: var(--signal)
-    }
-
-    /* static (non-link) project card — for NDA work with no repo */
-    .proj.static {
-      cursor: default
-    }
-
-    .proj.static:hover {
-      padding-left: 4px;
-      background: none
-    }
-
-    .proj.static:hover .pname {
-      color: var(--fg)
-    }
-
-    .proj .nda {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--fg-faint);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 2px 7px;
-    }
-
-    @media(max-width:640px) {
-      .proj {
-        grid-template-columns: auto 1fr;
-        gap: 12px
-      }
-
-      .proj .lang {
-        grid-column: 2;
-        text-align: left;
-        margin-top: 2px
-      }
-    }
-
-    /* contact */
-    .contact {
-      padding-bottom: 80px
-    }
-
-    .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 8px
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: .86rem;
-      font-weight: 500;
-      letter-spacing: .02em;
-      padding: 13px 20px;
-      border-radius: 8px;
-      transition: transform .2s, background .2s, border-color .2s;
-    }
-
-    .btn.primary {
-      background: var(--signal);
-      color: #241a00;
-      font-weight: 600
-    }
-
-    .btn.primary:hover {
-      transform: translateY(-2px);
-      background: #ffc85a
-    }
-
-    .btn.ghost {
-      border: 1px solid var(--line);
-      color: var(--fg)
-    }
-
-    .btn.ghost:hover {
-      border-color: var(--signal);
-      color: var(--signal);
-      transform: translateY(-2px)
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 26px 0;
-      color: var(--fg-faint)
-    }
-
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-family: var(--mono);
-      font-size: .74rem;
-      letter-spacing: .04em
-    }
-
-    /* reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .6s ease, transform .6s ease
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-      * {
-        animation: none !important
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none
-      }
-
-      html {
-        scroll-behavior: auto
-      }
-    }
-
-    /* accessible keyboard focus */
-    a:focus-visible,
-    .btn:focus-visible {
-      outline: 2px solid var(--signal);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alen Toholj — Cloud Solution Architect</title>
+<meta name="description" content="Alen Toholj — Cloud Solution Architect at Blum. 8+ years building, automating, and scaling reliable, mission-critical infrastructure on Azure and AWS.">
+<meta name="theme-color" content="#070d1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<style>
+:root{
+--bg:#070d1a;--bg-2:#0b1424;--card:rgba(255,255,255,.035);--card-h:rgba(255,255,255,.06);
+--line:rgba(120,170,255,.14);--line-2:rgba(120,170,255,.28);
+--fg:#e8eef8;--dim:#9aa9c1;--faint:#62728c;
+--accent:#3ea6ff;--accent-2:#0078d4;--glow:rgba(62,166,255,.35);
+--ok:#3ecf8e;--shadow:0 10px 40px rgba(0,0,0,.35);
+--display:'Plus Jakarta Sans',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+[data-theme="light"]{
+--bg:#f5f8fd;--bg-2:#ffffff;--card:#ffffff;--card-h:#f0f6ff;
+--line:#dce5f2;--line-2:#b9cbe6;
+--fg:#0b1628;--dim:#46566f;--faint:#7a8aa3;
+--accent:#0067c0;--accent-2:#0078d4;--glow:rgba(0,120,212,.18);
+--ok:#16a34a;--shadow:0 10px 30px rgba(15,40,80,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--mono);font-weight:500;font-size:.92rem}
+.logo b{color:var(--accent);font-weight:500}
+.links{display:flex;align-items:center;gap:26px;font-size:.88rem;color:var(--dim)}
+.links a:hover{color:var(--fg)}
+.toggle{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;display:grid;place-items:center;transition:border-color .2s}
+.toggle:hover{border-color:var(--accent)}
+.toggle svg{width:18px;height:18px}
+.toggle .sun{display:none}
+[data-theme="light"] .toggle .sun{display:block}
+[data-theme="light"] .toggle .moon{display:none}
+@media(max-width:760px){.links a{display:none}}
+
+/* hero */
+.hero{position:relative;padding:110px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:720px;height:720px;background:radial-gradient(circle,var(--glow),transparent 62%);filter:blur(10px);pointer-events:none}
+.hero svg.net{position:absolute;right:-60px;top:40px;width:620px;opacity:.55;pointer-events:none}
+[data-theme="light"] .hero svg.net{opacity:.35}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);font-size:.82rem;color:var(--dim);margin-bottom:28px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(62,207,142,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(62,207,142,0)}100%{box-shadow:0 0 0 0 rgba(62,207,142,0)}}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.8rem,7.5vw,5.2rem);line-height:1.02;letter-spacing:-.035em}
+h1 .grad{background:linear-gradient(100deg,var(--fg) 20%,var(--accent) 60%,var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:var(--display);font-size:clamp(1.15rem,2.6vw,1.6rem);font-weight:600;color:var(--dim);margin:16px 0 22px}
+.role span{color:var(--accent)}
+.lead{max-width:56ch;color:var(--dim);font-size:1.08rem;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line-2);background:var(--card);transition:transform .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;color:#fff;box-shadow:0 8px 28px var(--glow)}
+.btn svg{width:17px;height:17px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:64px}
+.stat{padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow)}
+.stat .v{font-family:var(--display);font-size:1.9rem;font-weight:800;letter-spacing:-.02em}
+.stat .v small{font-size:1rem;color:var(--accent);font-weight:700}
+.stat .k{font-size:.8rem;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;font-family:var(--mono)}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.hero svg.net{display:none}}
+
+/* sections */
+section{padding:90px 0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase}
+h2{font-family:var(--display);font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;margin:8px 0 38px}
+.card{border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);transition:border-color .25s,transform .25s,background .25s}
+.card:hover{border-color:var(--line-2);background:var(--card-h)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+.about p{color:var(--dim);margin-bottom:16px}
+.about p b{color:var(--fg);font-weight:600}
+.focus{padding:26px}
+.focus h3{font-family:var(--display);font-size:1.05rem;margin-bottom:14px}
+.focus li{list-style:none;display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.93rem}
+.focus li:first-of-type{border-top:none}
+.focus li i{font-style:normal;flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-size:.95rem}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+
+/* timeline */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--line))}
+.job{position:relative;padding:22px 26px;margin-bottom:18px}
+.job::before{content:"";position:absolute;left:-31px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--line-2)}
+.job.now::before{border-color:var(--accent);box-shadow:0 0 0 6px var(--glow)}
+.job .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.job h3{font-family:var(--display);font-size:1.15rem;font-weight:700}
+.job h3 span{color:var(--accent)}
+.job .when{font-family:var(--mono);font-size:.8rem;color:var(--faint)}
+.job p{color:var(--dim);font-size:.95rem;margin:8px 0 12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:.74rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--dim)}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.group{padding:22px}
+.group h3{font-family:var(--display);font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.group h3 i{font-style:normal}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.84rem;padding:6px 12px;border-radius:9px;background:color-mix(in srgb,var(--accent) 9%,transparent);border:1px solid var(--line);transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:860px){.stack{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.stack{grid-template-columns:1fr}}
+
+/* certs */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cert{display:flex;align-items:center;gap:16px;padding:20px}
+.cert:hover{transform:translateY(-3px)}
+.hex{flex:none;width:58px;height:64px;display:grid;place-items:center;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--c);color:#fff;font-family:var(--mono);font-size:.66rem;font-weight:500;text-align:center;line-height:1.15;box-shadow:inset 0 0 0 3px rgba(255,255,255,.18)}
+.cert .n{font-weight:600;font-size:.95rem;line-height:1.3}
+.cert .i{font-size:.8rem;color:var(--faint);margin-top:3px}
+.cert .lvl{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+@media(max-width:860px){.certs{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.certs{grid-template-columns:1fr}}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj{padding:26px;display:flex;flex-direction:column;gap:12px}
+.proj:hover{transform:translateY(-3px)}
+.proj .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,transparent),transparent);border:1px solid var(--line)}
+.proj h3{font-family:var(--display);font-size:1.12rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.nda{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;padding:2px 8px;border-radius:6px;border:1px solid var(--line-2);color:var(--faint)}
+.proj p{color:var(--dim);font-size:.92rem;flex:1}
+@media(max-width:860px){.projects{grid-template-columns:1fr}}
+
+/* contact */
+.contact{padding:56px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:auto -20% -60% -20%;height:340px;background:radial-gradient(ellipse,var(--glow),transparent 65%);pointer-events:none}
+.contact h2{margin-bottom:12px}
+.contact p{color:var(--dim);max-width:52ch;margin:0 auto 28px}
+.contact .cta{justify-content:center;position:relative}
+@media(max-width:560px){.contact{padding:36px 22px}}
+
+footer{padding:34px 0 46px;color:var(--faint);font-size:.84rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+</style>
 </head>
-
 <body>
 
-  <div class="topbar">
-    <div class="wrap">
-      <span class="brand"><span class="slash">~/</span>alen.toholj</span>
-      <nav class="nav">
-        <a href="#about">about</a>
-          <a href="#experience">experience</a>
-        <a href="#stack">stack</a>
-        <a href="#certs">certifications</a>
-        <a href="#work">work</a>
-        <a href="#contact">contact</a>
-      </nav>
-    </div>
-  </div>
+<nav class="nav">
+<div class="wrap">
+<a class="logo" href="#top"><b>~/</b>alen.toholj</a>
+<div class="links">
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#stack">Stack</a>
+<a href="#certs">Certifications</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
+<button class="toggle" id="toggle" aria-label="Switch color theme">
+<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+</div>
+</div>
+</nav>
 
-  <header class="hero">
-    <div class="wrap">
-      <div class="status-line reveal">
-        <span class="dot"></span>
-        <span class="status-txt">system status &middot; <b>operational</b> &middot; Höchst, Austria</span>
-      </div>
-      <h1 class="reveal">
-        Alen Toholj
-        <span class="role">Cloud Solution Architect @ Blum</span>
-      </h1>
-      <p class="tagline reveal">
-        8+ years building, automating, and scaling <b>reliable, mission-critical infrastructure</b> —
-        from data-center operations to modern cloud platforms. I like building things that scale
-        and fixing things that don't.
-      </p>
-      <div class="telemetry reveal">
-        <div class="cell">
-          <div class="k">Experience</div>
-          <div class="v">8+ <small>yrs</small></div>
-        </div>
-        <div class="cell">
-          <div class="k">Certifications</div>
-          <div class="v">6 <small>earned</small></div>
-        </div>
-        <div class="cell">
-          <div class="k">Role</div>
-          <div class="v" style="font-size:1.05rem">Cloud&nbsp;Solution&nbsp;Architect</div>
-        </div>
-        <div class="cell">
-          <div class="k">Focus</div>
-          <div class="v" style="font-size:1.05rem">
-            Azure&nbsp;&middot;&nbsp;Terraform&nbsp;&middot;&nbsp;Kubernetes&nbsp;&middot;&nbsp;GitLab</div>
-        </div>
-      </div>
-    </div>
-  </header>
+<header class="hero" id="top">
+<svg class="net" viewBox="0 0 600 420" fill="none" aria-hidden="true">
+<g stroke="var(--accent)" stroke-opacity=".35" stroke-width="1.2">
+<path d="M60 80H220V200H380V90H540"/><path d="M220 200V330H460V200H540"/><path d="M120 260H220"/><path d="M380 200V330"/><path d="M300 40V200"/>
+</g>
+<g fill="var(--accent)">
+<rect x="54" y="74" width="12" height="12" rx="3" opacity=".7"/><rect x="214" y="194" width="12" height="12" rx="3"/><rect x="374" y="84" width="12" height="12" rx="3" opacity=".7"/><rect x="534" y="84" width="12" height="12" rx="3" opacity=".5"/><rect x="454" y="324" width="12" height="12" rx="3" opacity=".6"/><rect x="114" y="254" width="12" height="12" rx="3" opacity=".5"/><rect x="294" y="34" width="12" height="12" rx="3" opacity=".6"/><rect x="534" y="194" width="12" height="12" rx="3" opacity=".7"/><rect x="374" y="194" width="12" height="12" rx="3"/>
+</g>
+</svg>
+<div class="wrap" style="position:relative">
+<div class="pill reveal"><span class="pulse"></span> Cloud Solution Architect @ Blum · Austria</div>
+<h1 class="reveal"><span class="grad">Alen Toholj</span></h1>
+<p class="role reveal">Designing <span>secure, automated</span> cloud platforms</p>
+<p class="lead reveal">8+ years building, automating and scaling reliable, mission-critical infrastructure, from data-center operations to modern cloud platforms on Azure and AWS. I like building things that scale and fixing things that don't.</p>
+<div class="cta reveal">
+<a class="btn primary" href="mailto:alen.toholj@gmail.com">Get in touch
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+<a class="btn" href="https://www.linkedin.com/in/alentoholj/" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub</a>
+</div>
+<div class="stats">
+<div class="stat reveal"><div class="v">8+ <small>yrs</small></div><div class="k">Experience</div></div>
+<div class="stat reveal"><div class="v">6</div><div class="k">Certifications</div></div>
+<div class="stat reveal"><div class="v">Azure</div><div class="k">Primary cloud</div></div>
+<div class="stat reveal"><div class="v">IaC</div><div class="k">Terraform · AVM</div></div>
+</div>
+</div>
+</header>
 
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">whoami</span>
-        <h2>About</h2>
-      </div>
-      <p class="reveal">I'm a <b>Cloud Solution Architect</b> at Blum, part of the IT Cloud Operations &amp; Services team.
-        My job is to design the platforms other teams build on — secure, well-governed cloud
-        environments on <b>Azure and AWS</b> — and to make sure the road from a developer's commit to
-        production is fast, repeatable, and safe.</p>
-      <p class="reveal">In practice that means codifying infrastructure with <b>Terraform</b>, standing up
-        <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running
-        containerized workloads on <b>Kubernetes</b>/<b>OpenShift</b>. I care about the things that don't show up in a
-        demo: <b>reliability, observability, and cost efficiency</b> — the difference between a system
-        that works and one you can trust at 3 a.m.
-      </p>
-      <p class="reveal">My path started in <b>systems engineering and data-center operations</b>, which is where I
-        learned how infrastructure actually behaves under pressure. Today I spend as much
-        time raising the bar on architecture and automation standards as I do writing code myself —
-        always looking for the smarter, simpler way to build.</p>
-    </div>
-  </section>
+<section id="about">
+<div class="wrap">
+<div class="reveal"><div class="eyebrow">whoami</div><h2>About me</h2></div>
+<div class="about">
+<div class="reveal">
+<p>I'm a <b>Cloud Solution Architect</b> at Blum, part of the IT Cloud Operations &amp; Services team. My job is to design the platforms other teams build on: secure, well-governed cloud environments on <b>Azure and AWS</b>, and a fast, repeatable and safe road from a developer's commit to production.</p>
+<p>In practice that means codifying infrastructure with <b>Terraform</b>, building <b>CI/CD pipelines</b> with security and compliance built in rather than bolted on, and running containerized workloads on <b>Kubernetes</b> and <b>OpenShift</b>. I care about the things that don't show up in a demo: <b>reliability, observability and cost efficiency</b>.</p>
+<p>My path started in <b>systems engineering and data-center operations</b>, which is where I learned how infrastructure actually behaves under pressure. That on-premises background helps me design hybrid environments that work end to end.</p>
+</div>
+<div class="card focus reveal">
+<h3>What I focus on</h3>
+<ul>
+<li><i>🏗️</i>Azure landing zones, networking and governance</li>
+<li><i>📜</i>Infrastructure as code with Terraform and AVM</li>
+<li><i>🔁</i>CI/CD with GitLab, Azure DevOps and GitHub Actions</li>
+<li><i>☸️</i>Containers and Kubernetes (AKS, EKS, OpenShift)</li>
+<li><i>🛡️</i>Security, reliability and FinOps</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">$ history | tail -4</span>
-        <h2>Experience</h2>
-      </div>
-      <div class="projects">
-        <div class="proj static reveal">
-          <span class="pnum">2024 – now</span>
-          <span class="pbody">
-            <span class="pname">Cloud Solution Architect · Blum</span>
-            <span class="pdesc">IT Cloud Operations &amp; Services. Azure architecture and landing zones, Terraform with Azure Verified Modules, GitLab and Azure DevOps pipelines, governance and day-to-day cloud operations.</span>
-          </span>
-          <span class="lang">Azure · Terraform · GitLab</span>
-        </div>
-        <div class="proj static reveal">
-          <span class="pnum">2022 – 2024</span>
-          <span class="pbody">
-            <span class="pname">DevOps Engineer · Klika</span>
-            <span class="pdesc">Cloud infrastructure and CI/CD on AWS and Azure for international client projects, with containers on Amazon EKS and AKS.</span>
-          </span>
-          <span class="lang">AWS · Azure · Kubernetes</span>
-        </div>
-        <div class="proj static reveal">
-          <span class="pnum">2019 – 2022</span>
-          <span class="pbody">
-            <span class="pname">System Engineer · QSS</span>
-            <span class="pdesc">Internal and customer infrastructure: VMware and Hyper-V, Windows and Linux servers, Veeam backups, monitoring and infrastructure projects.</span>
-          </span>
-          <span class="lang">VMware · Linux · Veeam</span>
-        </div>
-        <div class="proj static reveal">
-          <span class="pnum">2017 – 2019</span>
-          <span class="pbody">
-            <span class="pname">Associate Engineer, Networks &amp; Communications</span>
-            <span class="pdesc">Server, network and communications infrastructure for a large public-sector organization.</span>
-          </span>
-          <span class="lang">Windows Server · Hyper-V</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="experience">
+<div class="wrap">
+<div class="reveal"><div class="eyebrow">career</div><h2>Experience</h2></div>
+<div class="timeline">
+<div class="card job now reveal">
+<div class="top"><h3>Cloud Solution Architect <span>· Blum</span></h3><span class="when">Aug 2024 – present</span></div>
+<p>IT Cloud Operations &amp; Services. Azure architecture and landing zones, Terraform with Azure Verified Modules, GitLab and Azure DevOps pipelines, governance and day-to-day cloud operations.</p>
+<div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">GitLab CI</span><span class="tag">Azure Policy</span></div>
+</div>
+<div class="card job reveal">
+<div class="top"><h3>DevOps Engineer <span>· Klika</span></h3><span class="when">Oct 2022 – Aug 2024</span></div>
+<p>Cloud infrastructure and CI/CD on AWS and Azure for international client projects, with containerized workloads on Amazon EKS and AKS.</p>
+<div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span></div>
+</div>
+<div class="card job reveal">
+<div class="top"><h3>System Engineer <span>· QSS</span></h3><span class="when">Jul 2019 – Oct 2022</span></div>
+<p>Internal and customer infrastructure: VMware and Hyper-V, Windows and Linux servers, Veeam backups, monitoring and infrastructure projects.</p>
+<div class="tags"><span class="tag">VMware</span><span class="tag">Linux</span><span class="tag">Veeam</span><span class="tag">OpenShift</span></div>
+</div>
+<div class="card job reveal">
+<div class="top"><h3>Associate Engineer <span>· Networks &amp; Communications</span></h3><span class="when">Dec 2017 – Jun 2019</span></div>
+<p>Server, network and communications infrastructure for a large public-sector organization.</p>
+<div class="tags"><span class="tag">Windows Server</span><span class="tag">Hyper-V</span><span class="tag">Networking</span></div>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="stack" class="stack-sec">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">$ cat stack.txt</span>
-        <h2>Tech &amp; Tooling</h2>
-      </div>
-      <div class="stack reveal">
-        <span class="chip">Azure</span>
-        <span class="chip">AWS</span>
-        <span class="chip">Terraform</span>
-        <span class="chip">Kubernetes</span>
-        <span class="chip">OpenShift</span>
-        <span class="chip">Docker</span>
-        <span class="chip">Azure DevOps</span>
-        <span class="chip">GitLab CI</span>
-        <span class="chip">GitHub Actions</span>
-        <span class="chip">AKS<span class="g"> / </span>EKS</span>
-        <span class="chip">VMware</span>
-        <span class="chip">Veeam</span>
-        <span class="chip">Jenkins</span>
-        <span class="chip">CI<span class="g">/</span>CD</span>
-        <span class="chip">Bash</span>
-        <span class="chip">Linux</span>
-        <span class="chip">RHEL</span>
-        <span class="chip">Ansible</span>
-        <span class="chip">Monitoring</span>
-        <span class="chip">DevSecOps</span>
-      </div>
-    </div>
-  </section>
+<section id="stack">
+<div class="wrap">
+<div class="reveal"><div class="eyebrow">tooling</div><h2>Tech stack</h2></div>
+<div class="stack">
+<div class="card group reveal"><h3><i>☁️</i>Cloud</h3><div class="chips"><span class="chip">Microsoft Azure</span><span class="chip">AWS</span><span class="chip">Azure Policy</span><span class="chip">Key Vault</span></div></div>
+<div class="card group reveal"><h3><i>📜</i>Infrastructure as Code</h3><div class="chips"><span class="chip">Terraform</span><span class="chip">Azure Verified Modules</span><span class="chip">Ansible</span><span class="chip">Bash</span></div></div>
+<div class="card group reveal"><h3><i>🔁</i>CI/CD</h3><div class="chips"><span class="chip">GitLab CI</span><span class="chip">Azure DevOps</span><span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">Git</span></div></div>
+<div class="card group reveal"><h3><i>☸️</i>Containers</h3><div class="chips"><span class="chip">Kubernetes</span><span class="chip">AKS</span><span class="chip">Amazon EKS</span><span class="chip">OpenShift</span><span class="chip">Docker</span></div></div>
+<div class="card group reveal"><h3><i>🖥️</i>Infrastructure</h3><div class="chips"><span class="chip">Linux / RHEL</span><span class="chip">Windows Server</span><span class="chip">VMware</span><span class="chip">Hyper-V</span><span class="chip">Veeam</span></div></div>
+<div class="card group reveal"><h3><i>🛡️</i>Operations</h3><div class="chips"><span class="chip">Monitoring</span><span class="chip">DevSecOps</span><span class="chip">FinOps</span><span class="chip">Networking</span></div></div>
+</div>
+</div>
+</section>
 
-  <section id="certs">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">verified credentials</span>
-        <h2>Certifications</h2>
-      </div>
-      <div class="certs">
-        <a class="cert reveal"
-          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/BC2DEE263AC0C649?sharingId=DEA67547D200D4A9"
-          target="_blank" rel="noopener">
-          <span class="code">AZ-900</span>
-          <span class="meta">
-            <div class="name">Azure Fundamentals</div>
-            <div class="issuer">Microsoft</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="cert reveal"
-          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/710E750EEFA6EBD0?sharingId=DEA67547D200D4A9"
-          target="_blank" rel="noopener">
-          <span class="code">AZ-104</span>
-          <span class="meta">
-            <div class="name">Azure Administrator Associate</div>
-            <div class="issuer">Microsoft</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="cert reveal"
-          href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/DB331F78114B0761"
-          target="_blank" rel="noopener">
-          <span class="code">AZ-400</span>
-          <span class="meta">
-            <div class="name">DevOps Engineer Expert</div>
-            <div class="issuer">Microsoft</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="cert reveal"
-          href="https://www.credly.com/badges/e24d36be-bf69-4180-8a0c-c238c6bbe23c/linked_in_profile" target="_blank"
-          rel="noopener">
-          <span class="code">CLF-C02</span>
-          <span class="meta">
-            <div class="name">AWS Cloud Practitioner</div>
-            <div class="issuer">Amazon Web Services</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="cert reveal" href="https://cs.lpi.org/caf/Xamman/certification/verify/LPI000511607/7ccdb96qh8"
-          target="_blank" rel="noopener">
-          <span class="code">LPIC-1</span>
-          <span class="meta">
-            <div class="name">Certified Linux Administrator</div>
-            <div class="issuer">Linux Professional Institute</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="cert reveal"
-          href="https://www.credly.com/badges/5a2ef478-5955-449c-9046-cee45d83b927/linked_in_profile" target="_blank"
-          rel="noopener">
-          <span class="code">RHCSA</span>
-          <span class="meta">
-            <div class="name">Certified System Administrator</div>
-            <div class="issuer">Red Hat</div>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+<section id="certs">
+<div class="wrap">
+<div class="reveal"><div class="eyebrow">verified credentials</div><h2>Certifications</h2></div>
+<div class="certs">
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#0078d4,#50a5ff)" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/DB331F78114B0761" target="_blank" rel="noopener"><span class="hex">AZ<br>400</span><span><div class="n">DevOps Engineer Expert</div><div class="i">Microsoft</div><span class="lvl">Expert</span></span></a>
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#0078d4,#50a5ff)" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/710E750EEFA6EBD0?sharingId=DEA67547D200D4A9" target="_blank" rel="noopener"><span class="hex">AZ<br>104</span><span><div class="n">Azure Administrator Associate</div><div class="i">Microsoft</div><span class="lvl">Associate</span></span></a>
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#0078d4,#50a5ff)" href="https://learn.microsoft.com/api/credentials/share/en-us/AlenToholj-2009/BC2DEE263AC0C649?sharingId=DEA67547D200D4A9" target="_blank" rel="noopener"><span class="hex">AZ<br>900</span><span><div class="n">Azure Fundamentals</div><div class="i">Microsoft</div><span class="lvl">Fundamentals</span></span></a>
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#ff9900,#e07b00)" href="https://www.credly.com/badges/e24d36be-bf69-4180-8a0c-c238c6bbe23c/linked_in_profile" target="_blank" rel="noopener"><span class="hex">CLF<br>C02</span><span><div class="n">AWS Cloud Practitioner</div><div class="i">Amazon Web Services</div><span class="lvl">Foundational</span></span></a>
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#ee0000,#a30000)" href="https://www.credly.com/badges/5a2ef478-5955-449c-9046-cee45d83b927/linked_in_profile" target="_blank" rel="noopener"><span class="hex">RH<br>CSA</span><span><div class="n">Certified System Administrator</div><div class="i">Red Hat</div><span class="lvl">Professional</span></span></a>
+<a class="card cert reveal" style="--c:linear-gradient(135deg,#2e7d32,#66bb6a)" href="https://cs.lpi.org/caf/Xamman/certification/verify/LPI000511607/7ccdb96qh8" target="_blank" rel="noopener"><span class="hex">LPIC<br>1</span><span><div class="n">Certified Linux Administrator</div><div class="i">Linux Professional Institute</div><span class="lvl">Professional</span></span></a>
+</div>
+</div>
+</section>
 
-  <section id="work">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">$ ls ~/repos</span>
-        <h2>Projects</h2>
-      </div>
-      <div class="projects">
-        <!--
-        ADD PROJECTS HERE. For a linked repo, use an "a.proj reveal" anchor with an href.
-        For NDA / no-link work, use a "div.proj static reveal" block like the one below.
-        Increment pnum (01, 02, 03…) per project.
-      -->
-        <div class="proj static reveal">
-          <span class="pnum">01</span>
-          <span class="pbody">
-            <span class="pname">Storage Platform <span class="nda">NDA</span></span>
-            <span class="pdesc">Owned the cloud architecture for a storage API and its companion service — designed the
-              resource topology, provisioned and deployed the infrastructure, and established CI/CD pipelines to
-              automate build, test, and release across the repositories.</span>
-          </span>
-          <span class="lang">Azure · Terraform · Azure DevOps</span>
-        </div>
-        <div class="proj static reveal">
-          <span class="pnum">02</span>
-          <span class="pbody">
-            <span class="pname">OpenShift Platform on VMware <span class="nda">NDA</span></span>
-            <span class="pdesc">Architected and deployed a Red Hat OpenShift platform on VMware virtualization,
-              provisioning the underlying infrastructure with Terraform. Owned the cluster setup and configuration end
-              to end, the ongoing platform maintenance, and the deployment of application services onto the
-              cluster.</span>
-          </span>
-          <span class="lang">OpenShift · VMware · Terraform · Jenkins</span>
-        </div>
-        <div class="proj static reveal">
-          <span class="pnum">03</span>
-          <span class="pbody">
-            <span class="pname">Education Platform <span class="nda">NDA</span></span>
-            <span class="pdesc">Contributed to the cloud architecture and delivery foundation for an education-focused
-              platform,
-              designing the Azure-based platform approach and implementing infrastructure as code with Terraform.
-              Supported deployment automation through Azure DevOps pipelines, helping establish a repeatable and
-              scalable path from provisioning to application release in Azure.</span>
-          </span>
-          <span class="lang">Azure · Terraform · Azure DevOps</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="work">
+<div class="wrap">
+<div class="reveal"><div class="eyebrow">selected work</div><h2>Projects</h2></div>
+<div class="projects">
+<div class="card proj reveal"><div class="ic">🗄️</div><h3>Storage Platform <span class="nda">NDA</span></h3><p>Owned the cloud architecture for a storage API and its companion service: designed the resource topology, provisioned the infrastructure and set up CI/CD to automate build, test and release.</p><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
+<div class="card proj reveal"><div class="ic">🧱</div><h3>OpenShift on VMware <span class="nda">NDA</span></h3><p>Architected and deployed a Red Hat OpenShift platform on VMware, provisioned with Terraform. Owned cluster setup end to end, ongoing maintenance and deployment of application services.</p><div class="tags"><span class="tag">OpenShift</span><span class="tag">VMware</span><span class="tag">Terraform</span><span class="tag">Jenkins</span></div></div>
+<div class="card proj reveal"><div class="ic">🎓</div><h3>Education Platform <span class="nda">NDA</span></h3><p>Designed the Azure platform approach and IaC foundation for an education platform, with Azure DevOps pipelines from provisioning to application release.</p><div class="tags"><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span></div></div>
+</div>
+</div>
+</section>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">open a connection</span>
-        <h2>Get in touch</h2>
-      </div>
-      <p class="tagline reveal" style="margin-bottom:22px">Always up for a conversation about cloud architecture,
-        automation, or platform engineering.</p>
-      <div class="contact-grid reveal">
-        <a class="btn primary" href="mailto:alen.toholj@gmail.com">Email me ↗</a>
-        <a class="btn ghost" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/alentoholj/" target="_blank"
-          rel="noopener">LinkedIn ↗</a>
-        <a class="btn ghost" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </div>
-  </section>
+<section id="contact">
+<div class="wrap">
+<div class="card contact reveal">
+<div class="eyebrow">open a connection</div>
+<h2>Let's talk cloud</h2>
+<p>Always up for a conversation about cloud architecture, automation or platform engineering.</p>
+<div class="cta">
+<a class="btn primary" href="mailto:alen.toholj@gmail.com">Email me</a>
+<a class="btn" href="https://www.linkedin.com/in/alentoholj/" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/alentoholj" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="Alen-Toholj-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+</div>
+</div>
+</div>
+</section>
 
-  <footer>
-    <div class="wrap">
-      <span>&copy; <span id="yr"></span> Alen Toholj</span>
-    </div>
-  </footer>
+<footer>
+<div class="wrap"><span>&copy; <span id="yr"></span> Alen Toholj</span><span class="mono">Originally from Bosnia and Herzegovina · based in Höchst, Austria</span></div>
+</footer>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: .12 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (Math.min(i, 6) * 60) + 'ms';
-      io.observe(el);
-    });
-  </script>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('toggle').addEventListener('click',function(){
+var r=document.documentElement,t=r.getAttribute('data-theme')==='light'?'dark':'light';
+r.setAttribute('data-theme',t);try{localStorage.setItem('theme',t)}catch(e){}});
+var els=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+els.forEach(function(el,i){el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+}else{els.forEach(function(el){el.classList.add('in')})}
+</script>
 </body>
-
 </html>
